@@ -1,6 +1,6 @@
 # Long-Distance Pedestrian Detection for Early Warning Systems
 
-Detecting pedestrians on the road is a crucial skill for both human and AI drivers. In PH, about **7 pedestrians die** every day from traffic accidents. [[1](https://www.manilatimes.net/2025/04/29/business/real-estate-and-property/pedestrians-are-asking-for-a-more-walkable-ncr/2100738)]
+Detecting pedestrians on the road is a crucial skill for both human and AI drivers. In PH, about **7 pedestrians die** every day from traffic accidents [[1](https://www.manilatimes.net/2025/04/29/business/real-estate-and-property/pedestrians-are-asking-for-a-more-walkable-ncr/2100738)].
 
 ## Different priorities...
 
@@ -60,15 +60,14 @@ Images from this dataset, available at the `dataset` directory or at Roboflow [[
 
 ```bibtex
 @misc{ long-distance-pedestrian-detection-from-a-driver-pov-mkmsn_dataset,
-  title = { Long-Distance Pedestrian Detection from a Driver POV Dataset },
-  type = { Open Source Dataset },
-  author = { jpsalvahan },
-  howpublished = { \url{ https://universe.roboflow.com/jpsalvahan/long-distance-pedestrian-detection-from-a-driver-pov-mkmsn } },
-  url = { https://universe.roboflow.com/jpsalvahan/long-distance-pedestrian-detection-from-a-driver-pov-mkmsn },
-  journal = { Roboflow Universe },
-  publisher = { Roboflow },
-  year = { 2025 },
-  month = { nov },
-  note = { visited on 2026-07-29 },
+  title = {Long-Distance Pedestrian Detection from a Driver POV Dataset},
+  type = {Open Source Dataset},
+  author = {jpsalvahan},
+  howpublished = {\url{https://universe.roboflow.com/jpsalvahan/long-distance-pedestrian-detection-from-a-driver-pov-mkmsn}},
+  url = {https://universe.roboflow.com/jpsalvahan/long-distance-pedestrian-detection-from-a-driver-pov-mkmsn},
+  journal = {Roboflow Universe},
+  publisher = {Roboflow},
+  year = {2025},
+  month = {nov},
 }
 ```
