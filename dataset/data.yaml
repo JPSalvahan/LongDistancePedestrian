@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 2
+names: ['cyclist', 'pedestrian']
+
+roboflow:
+  workspace: jpsalvahan
+  project: long-distance-pedestrian-detection-from-a-driver-pov-mkmsn
+  version: 6
+  license: MIT
+  url: https://universe.roboflow.com/jpsalvahan/long-distance-pedestrian-detection-from-a-driver-pov-mkmsn/dataset/6
