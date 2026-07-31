@@ -1,73 +1,68 @@
 # Long-Distance Pedestrian Detection for Early Warning Systems
 
-Detecting pedestrians on the road is a crucial skill for both human and AI drivers. In PH, about **7 pedestrians die** every day from traffic accidents [[1](https://www.manilatimes.net/2025/04/29/business/real-estate-and-property/pedestrians-are-asking-for-a-more-walkable-ncr/2100738)].
+This repository contains the code and dataset used in a mini-project on object detection for UP Diliman's CS 176 Computer Vision class.
 
-## Different priorities...
+## Motivation
 
-Self-driving systems:
-* Skill levels are still low.
-* Priority is to detect pedestrians that are up close (ex. LiDAR for point clouds).
+Detecting pedestrians on the road is a crucial skill for both human and AI drivers. In the Philippines, around **7 pedestrians die** every day from traffic accidents [[1](https://www.manilatimes.net/2025/04/29/business/real-estate-and-property/pedestrians-are-asking-for-a-more-walkable-ncr/2100738)]. All drivers struggle with **long-distance pedestrian detection**, due to the limits of either eyesight or hardware (i.e. LiDAR in self-driving cars).
 
-Human drivers:
-* Already good at detecting things nearby.
-* Benefits from **early warning systems** for pedestrians far away.
+While this could be solved with computer vision, existing datasets are limited by examples where:
+* Pedestrians are almost always up-close.
+* POV is not from a driver's perspective.
+* Scenarios are not traffic-based at all.
 
-## What datasets are out there?
+<figure>
+  <img src="assets\old_examples.png">
+  <figcaption style="text-align: center;">Examples from a Roboflow dataset [<a href="https://universe.roboflow.com/human-v2/human-dataset-v2">2</a>].</figcaption>
+</figure>
 
-* Examples of pedestrians are almost always up-close.
-* Some examples are not from realistic driving POVs.
-* Some examples are not from traffic-based scenarios at all.
+To address this gap, we construct a new dataset composed of 288 Google Street View images from within and around UP Diliman. It identifies both pedestrians and cyclists, and has both close-up and far-away examples for detection.
 
-<img src=".github\assets\old_examples.png">
+<figure>
+  <img src="assets\new_examples.png">
+  <figcaption style="text-align: center;">Examples from this dataset.
+</figure>
 
-Images from an existing Roboflow dataset [[2](https://universe.roboflow.com/human-v2/human-dataset-v2)].
+## Dataset
 
-## Something new:
+The dataset used in the project is available in this repository, as well as in Roboflow: https://universe.roboflow.com/jpsalvahan/long-distance-pedestrian-detection-from-a-driver-pov-mkmsn. The dataset is split into:
+* **Training**: 256 images
+* **Validation**: 16 images
+* **Test**: 16 images
 
-* 288 Google Street View images from within and around UP Diliman.
-* Identifies both pedestrians & cyclists.
-* Has both close-up and far-away examples for detection.
+## Training
 
-<img src=".github\assets\new_examples.png">
+We compare Ultralytics' YOLO11s trained on this dataset (256 images) and a model trained on the Human Dataset v2 (10,939 images) [<a href="https://universe.roboflow.com/human-v2/human-dataset-v2">2</a>] with an image from the test split:
 
-Images from this dataset, available at the `dataset` directory or at Roboflow [[3](https://universe.roboflow.com/human-v2/human-dataset-v2)].
+<figure>
+  <img src="assets\old_results.png">
+  <figcaption style="text-align: center;">Result with Roboflow 2.0 Object Detection trained on Human Dataset v2.
+</figure>
 
-## Results
+<figure>
+  <img src="assets\new_results.png">
+  <figcaption style="text-align: center;">Result with YOLO11s trained on this dataset.
+</figure>
 
-<img src=".github\assets\old_results.png">
-
-* **Model**: Roboflow 2.0 Object Detection (Fast)
-* **Dataset**: [Human Dataset v2](https://universe.roboflow.com/human-v2/human-dataset-v2) (13,659 images)
-
-<img src=".github\assets\new_results.png">
-
-* **Model**: YOLO11s
-* **Dataset**: This Dataset (288 images)
-
-## Details
-
-* **Data splits**: 256 train / 16 valid / 16 test
-* **Model**: YOLO11s (small)
-* **Training**:
+The weights for this YOLO11s model can be found in this repository. To train the model from scratch, simply run all cells in `trainer.ipynb`. Some additional training details:
   * 100 epochs
   * Data augmentation (HSV, flip, etc.)
-  * Cosine LR
-  * 960x960 images
+  * Cosine LR schedule
+  * 960 x 960 images
 
-<img src=".github\assets\training_stats.png">
+## Demo
+
+`app.py` launches a live demo of the YOLO11s model in Gradio. This, along with OBS Studio, was used to showcase the model's capability on Google Street View.
 
 ## Citation
 
 ```bibtex
-@misc{ long-distance-pedestrian-detection-from-a-driver-pov-mkmsn_dataset,
-  title = {Long-Distance Pedestrian Detection from a Driver POV Dataset},
-  type = {Open Source Dataset},
-  author = {jpsalvahan},
-  howpublished = {\url{https://universe.roboflow.com/jpsalvahan/long-distance-pedestrian-detection-from-a-driver-pov-mkmsn}},
-  url = {https://universe.roboflow.com/jpsalvahan/long-distance-pedestrian-detection-from-a-driver-pov-mkmsn},
-  journal = {Roboflow Universe},
-  publisher = {Roboflow},
-  year = {2025},
-  month = {nov},
+@misc{
+    salvahan2025longdistance,
+    title        = {Long-Distance Pedestrian Detection for Early Warning Systems},
+    author       = {John Paul B. Salvahan},
+    howpublished = {\url{https://github.com/JPSalvahan/LongDistancePedestrian}},
+    year         = {2026},
+    note         = {Project originally created in 2025.}
 }
 ```
