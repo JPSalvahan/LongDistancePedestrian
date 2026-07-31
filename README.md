@@ -11,17 +11,17 @@ While this could be solved with computer vision, existing datasets are limited b
 * POV is not from a driver's perspective.
 * Scenarios are not traffic-based at all.
 
-<figure>
-  <img src="assets\old_examples.png">
-  <figcaption style="text-align: center;">Examples from a Roboflow dataset [<a href="https://universe.roboflow.com/human-v2/human-dataset-v2">2</a>].</figcaption>
-</figure>
+<p align="center">
+  <img src="assets/old_examples.png"><br>
+  Examples from a Roboflow dataset [<a href="https://universe.roboflow.com/human-v2/human-dataset-v2">2</a>].
+</p>
 
 To address this gap, we construct a new dataset composed of 288 Google Street View images from within and around UP Diliman. It identifies both pedestrians and cyclists, and has both close-up and far-away examples for detection.
 
-<figure>
-  <img src="assets\new_examples.png">
-  <figcaption style="text-align: center;">Examples from this dataset.
-</figure>
+<p align="center">
+  <img src="assets/new_examples.png"><br>
+  Examples from this dataset.
+</p>
 
 ## Dataset
 
@@ -34,15 +34,15 @@ The dataset used in the project is available in this repository, as well as in R
 
 We compare Ultralytics' YOLO11s trained on this dataset (256 images) and a model trained on the Human Dataset v2 (10,939 images) [<a href="https://universe.roboflow.com/human-v2/human-dataset-v2">2</a>] with an image from the test split:
 
-<figure>
-  <img src="assets\old_results.png">
-  <figcaption style="text-align: center;">Result with Roboflow 2.0 Object Detection trained on Human Dataset v2.
-</figure>
+<p align="center">
+  <img src="assets/old_results.png"><br>
+  Result with Roboflow 2.0 Object Detection trained on Human Dataset v2.
+</p>
 
-<figure>
-  <img src="assets\new_results.png">
-  <figcaption style="text-align: center;">Result with YOLO11s trained on this dataset.
-</figure>
+<p align="center">
+  <img src="assets/new_results.png"><br>
+  Result with YOLO11s trained on this dataset.
+</p>
 
 The weights for this YOLO11s model can be found in this repository. To train the model from scratch, simply run all cells in `trainer.ipynb`. Some additional training details:
   * 100 epochs
